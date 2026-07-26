@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="captureflow-128.png" type="image/png" />
+    <meta name="description" content="Troubleshooting steps for CaptureFlow captures, permissions, imports, downloads, and Windows folder copies." />
+    <link rel="canonical" href="https://5c0ttp.github.io/captureflow-showcase/troubleshooting.html" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Troubleshooting | CaptureFlow</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header"><div class="nav-shell">
+      <a class="brand" href="index.html"><img class="brand-mark" src="captureflow-128.png" alt="" />CaptureFlow</a>
+      <nav aria-label="Primary navigation"><ul>
+        <li><a href="support.html">Support</a></li><li><a href="faq.html">FAQ</a></li><li><a aria-current="page" href="troubleshooting.html">Troubleshooting</a></li><li><a href="privacy-policy.html">Privacy</a></li>
+      </ul></nav>
+    </div></header>
+    <main class="page-shell content-page" id="main">
+      <p class="eyebrow">Troubleshooting</p>
+      <h1>Resolve common CaptureFlow problems.</h1>
+      <p class="lede">Work through the relevant steps below before opening a support request.</p>
+      <div class="privacy-notice" role="note"><strong>When requesting help:</strong> Fictional screenshots or private data should never be included in public reports. Describe the problem without attaching sensitive images.</div>
+      <section class="troubleshooting-grid">
+        <article class="trouble"><h2>A capture permission is denied</h2><ol><li>Open <code>chrome://extensions</code> and select CaptureFlow’s details.</li><li>Review site-access permissions and allow access for the page you intend to capture.</li><li>Reload the target page and start the capture again.</li></ol></article>
+        <article class="trouble"><h2>A Chrome page cannot be captured</h2><p>Chrome blocks extensions from capturing protected pages such as <code>chrome://</code> pages, the Chrome Web Store, and some browser-controlled screens. Open an ordinary website and try again.</p></article>
+        <article class="trouble"><h2>The side panel cannot capture after switching tabs</h2><ol><li>Grant CaptureFlow’s optional website access when prompted.</li><li>If you declined it, open CaptureFlow’s extension details and update site access.</li><li>Return to the website, reload it, and retry from the side panel.</li></ol></article>
+        <article class="trouble"><h2>A full-page capture is incomplete</h2><ol><li>Wait for the page to finish loading.</li><li>Close menus, sticky overlays, or dialogs that obscure the page.</li><li>Avoid scrolling or switching tabs while CaptureFlow stitches the page.</li><li>Retry after reloading if the page changes content while scrolling.</li></ol></article>
+        <article class="trouble"><h2>An image will not import</h2><p>Confirm the file is PNG, JPEG, or WebP, is not empty or corrupted, and is within CaptureFlow’s supported file-size limit. Export unusual formats to PNG or JPEG before importing.</p></article>
+        <article class="trouble"><h2>A download or ZIP export does not appear</h2><ol><li>Check Chrome’s Downloads page for an error or blocked download.</li><li>Confirm Chrome is allowed to download files to the configured location.</li><li>Ensure the destination has sufficient free space, then retry.</li></ol></article>
+        <article class="trouble"><h2>The Windows folder is disconnected</h2><ol><li>Open CaptureFlow Settings.</li><li>Reconnect the optional Windows backup folder and approve read/write access.</li><li>If the folder was moved or renamed, select its new location.</li><li>Retry any entries marked as pending or failed.</li></ol></article>
+        <article class="trouble"><h2>Library data is missing after uninstalling or clearing storage</h2><p>CaptureFlow’s working library is stored in the current Chrome profile. Uninstalling the extension, clearing its data, or resetting the profile removes that storage. Downloads and folder copies cannot currently restore the library.</p></article>
+      </section>
+      <section class="section"><h2>Still need help?</h2><p>Review <a href="support.html">how to prepare a support request</a>, then use the Support section on CaptureFlow’s Chrome Web Store listing after publication.</p></section>
+    </main>
+    <footer class="site-footer"><div class="footer-shell"><p>CaptureFlow support information</p><p><a href="faq.html">Frequently asked questions</a></p></div></footer>
+  </body>
+</html>

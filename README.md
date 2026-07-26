@@ -80,8 +80,8 @@ CaptureFlow is distributed as a packaged Chrome extension. A release build is co
 
 For product support and privacy information:
 
-- [CaptureFlow support](https://5c0ttp.github.io/captureflow-support/)
-- [Privacy policy](https://5c0ttp.github.io/captureflow-support/privacy-policy.html)
+- [CaptureFlow support](https://5c0ttp.github.io/captureflow-showcase/support.html)
+- [Privacy policy](https://5c0ttp.github.io/captureflow-showcase/privacy-policy.html)
 
 ## Project status
 
