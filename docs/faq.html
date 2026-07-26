@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="captureflow-128.png" type="image/png" />
+    <meta name="description" content="Frequently asked questions about CaptureFlow storage, privacy, imports, edits, downloads, and backups." />
+    <link rel="canonical" href="https://5c0ttp.github.io/captureflow-showcase/faq.html" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>FAQ | CaptureFlow</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header"><div class="nav-shell">
+      <a class="brand" href="index.html"><img class="brand-mark" src="captureflow-128.png" alt="" />CaptureFlow</a>
+      <nav aria-label="Primary navigation"><ul>
+        <li><a href="support.html">Support</a></li><li><a aria-current="page" href="faq.html">FAQ</a></li><li><a href="troubleshooting.html">Troubleshooting</a></li><li><a href="privacy-policy.html">Privacy</a></li>
+      </ul></nav>
+    </div></header>
+    <main class="page-shell content-page" id="main">
+      <p class="eyebrow">Frequently asked questions</p>
+      <h1>How CaptureFlow handles your images and data.</h1>
+      <p class="lede">CaptureFlow is designed as a local working library. These answers explain what is saved, what leaves the extension, and what cannot be restored.</p>
+      <section class="faq-list" aria-label="Frequently asked questions">
+        <details open><summary>Where does CaptureFlow store my library?</summary><div>The working image library, metadata, and settings are stored in IndexedDB inside your current Chrome profile. CaptureFlow has no backend, cloud library, or account system.</div></details>
+        <details><summary>Are screenshots or imported images uploaded?</summary><div>No. Capturing, importing, stitching, cropping, annotation, blur, pixelation, thumbnails, and duplicate hashing run locally using browser capabilities. CaptureFlow does not transmit your images to the developer or third parties.</div></details>
+        <details><summary>Which image files can I import?</summary><div>CaptureFlow accepts local PNG, JPEG, and WebP images within its supported file-size limit. The selected image and its basic file information are stored locally in the working library.</div></details>
+        <details><summary>Does editing replace my original image?</summary><div>No. CaptureFlow keeps the original and stores an edited version only when visual edits are saved. You can view or download the original separately.</div></details>
+        <details><summary>Are downloads and ZIP exports backups?</summary><div>They are one-way copies. CaptureFlow can download individual images and create ZIP exports, but it cannot currently restore or import a CaptureFlow library from those files.</div></details>
+        <details><summary>What does the optional Windows folder do?</summary><div>When enabled, CaptureFlow can write local PNG, JSON, and Markdown copies to a folder you choose. These copies do not replace the IndexedDB working library and cannot restore it.</div></details>
+        <details><summary>Why might a Windows folder need to be reconnected?</summary><div>Chrome controls access to the selected folder. Browser restarts, permission changes, profile changes, or moving the folder may require you to reconnect or grant permission again.</div></details>
+        <details><summary>What happens if I uninstall CaptureFlow?</summary><div>Uninstalling the extension removes its Chrome-profile storage. CaptureFlow has no cloud copy and cannot recover that library. Files previously downloaded or copied to a Windows folder remain wherever you saved them.</div></details>
+        <details><summary>Can support recover missing captures?</summary><div>No. Support has no remote access to your local Chrome profile or image library. If Chrome storage was cleared, the profile was reset, or the extension was uninstalled, the working library cannot be recovered by CaptureFlow.</div></details>
+      </section>
+    </main>
+    <footer class="site-footer"><div class="footer-shell"><p>CaptureFlow support information</p><p><a href="support.html">Get support</a></p></div></footer>
+  </body>
+</html>
