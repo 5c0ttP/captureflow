@@ -1,4 +1,5 @@
 # CaptureFlow
+Link: https://chromewebstore.google.com/detail/captureflow/hednpbkmifhjcpjfpncneleonhaknpdk
 
 CaptureFlow is a privacy-first Chrome extension that turns screenshots into a searchable, locally stored work library. It combines capture, annotation, organization, export, and optional Windows folder mirroring without requiring an account, backend, analytics service, or cloud sync.
 
