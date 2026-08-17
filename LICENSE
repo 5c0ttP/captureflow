@@ -1,16 +1,20 @@
-CaptureFlow Portfolio License
+CaptureFlow Public Materials License
 Copyright (c) 2026 Scott Patterson. All rights reserved.
 
-The contents of this repository are made publicly viewable solely for personal,
-educational, recruitment, and portfolio evaluation.
+This repository is the official public home for CaptureFlow product
+information, screenshots, support resources, privacy documentation, release
+information, and public issue tracking.
 
-You may view the repository and evaluate the materials for those purposes. No
-permission is granted to copy, reproduce, modify, adapt, distribute, publish,
-sublicense, sell, commercially exploit, or create derivative works from any
-portion of these materials except where applicable law expressly permits it.
+You may view these materials and link to their public GitHub or GitHub Pages
+locations. No permission is granted to copy, reproduce, modify, adapt,
+distribute, publish, sublicense, sell, commercially exploit, or create
+derivative works from these materials except where applicable law expressly
+permits it.
 
 The CaptureFlow name, branding, product design, screenshots, documentation,
-code samples, and other materials remain proprietary to Scott Patterson.
+and other materials remain proprietary to Scott Patterson. The production
+extension source code and build pipeline are not distributed by this
+repository.
 
 THE MATERIALS ARE PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS
@@ -18,4 +22,5 @@ FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT. IN NO EVENT SHALL THE COPYRIGHT
 HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY ARISING FROM OR IN
 CONNECTION WITH THE MATERIALS OR THEIR USE.
 
-For permission beyond portfolio evaluation, contact the copyright holder.
+For permission beyond viewing and linking to these public materials, contact
+the copyright holder.

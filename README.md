@@ -1,93 +1,151 @@
 # CaptureFlow
-Link: https://chromewebstore.google.com/detail/captureflow/hednpbkmifhjcpjfpncneleonhaknpdk
 
-CaptureFlow is a privacy-first Chrome extension that turns screenshots into a searchable, locally stored work library. It combines capture, annotation, organization, export, and optional Windows folder mirroring without requiring an account, backend, analytics service, or cloud sync.
+<p align="center">
+  <strong>Capture now. Find it later.</strong><br />
+  A private, searchable screenshot and image workspace for Chrome.
+</p>
 
-> This is a portfolio showcase. The production source code and Chrome Web Store build pipeline are maintained in a private repository.
+<p align="center">
+  <code>Current release: v0.2.0</code> · Chrome 116+ · No account · No cloud sync
+</p>
 
-![CaptureFlow product walkthrough](assets/captureflow-demo.gif)
+<p align="center">
+  <a href="https://chromewebstore.google.com/detail/captureflow/hednpbkmifhjcpjfpncneleonhaknpdk">Chrome Web Store</a> ·
+  <a href="https://5c0ttp.github.io/captureflow/">Website</a> ·
+  <a href="https://5c0ttp.github.io/captureflow/support.html">Support</a> ·
+  <a href="https://5c0ttp.github.io/captureflow/privacy-policy.html">Privacy</a>
+</p>
 
-## Product highlights
+![CaptureFlow 0.2.0](assets/captureflow-hero.png)
 
-- Capture the visible viewport, a selected region, or a stitched full page
-- Import PNG, JPEG, and WebP images into the same workflow
-- Annotate with crop, pen, highlighter, shapes, arrows, text, blur, and pixelation
-- Organize captures with notes, tags, projects, favorites, search, filters, and duplicate detection
-- Export individual images, Markdown, JSON, CSV, and multi-capture ZIP archives
-- Mirror readable copies to a user-selected Windows folder while keeping IndexedDB authoritative
-- Recover deleted captures from Trash before permanent removal
-- Use a compact Chrome side-panel gallery or the full management interface
+CaptureFlow captures webpages or imports local images, opens them in a non-destructive annotation editor, and keeps the images with searchable notes, tags, projects, and groups in the current Chrome profile.
+
+This is CaptureFlow's official public repository for product information, screenshots, support resources, privacy documentation, release information, and public issue tracking. The production extension source and store build pipeline are not distributed here.
+
+## What's new in v0.2.0
+
+- Redesigned Dark and Light themes, plus System and Original themes
+- Longer full-page captures with improved handling of repeated fixed and sticky page elements
+- User-created groups in the full Gallery and compact side-panel Gallery
+- Autocomplete for groups, projects, and tags with keyboard-first navigation
+- Improved text, rectangle, and arrow placement and adjustment
+- Movable, aspect-ratio-preserving text and an Apply workflow for rectangles and arrows
+- Adjustable arrow size, color, and opacity with a sharper arrowhead
+- Non-destructive editing from either the original or edited image
+- Automatically saved preferences with visible save status
+- Updated icon, popup, sidebar, and higher-contrast controls
 
 ## Product tour
 
-| Capture | Searchable gallery |
+| Capture from the popup | Search and organize |
 | --- | --- |
-| ![Capture modes](assets/capture-modes.png) | ![Searchable gallery](assets/gallery.png) |
+| ![CaptureFlow 0.2.0 popup with visible-area, full-page, and selected-region capture modes](assets/capture-modes.png) | ![CaptureFlow 0.2.0 Gallery with groups, search, filters, and locally stored captures](assets/gallery.png) |
 
-| Local editor | Storage controls |
+| Annotate locally | Position shapes before applying |
 | --- | --- |
-| ![Local image editor](assets/editor.png) | ![Local storage settings](assets/storage.png) |
+| ![CaptureFlow 0.2.0 editor with crop, pen, highlighter, shape, text, blur, and pixelation tools](assets/editor.png) | ![CaptureFlow 0.2.0 rectangle placement workflow](assets/shape-placement.png) |
 
-## Architecture
+| Import and pixelate local images |
+| --- |
+| ![CaptureFlow 0.2.0 pixelation applied to an imported image](assets/import.png) |
+
+## What CaptureFlow does
+
+### Capture and import
+
+- Capture the visible area, draw a selected region, or stitch a full scrolling page
+- Import PNG, JPEG, and WebP images
+- Open new captures and imports directly in the local editor
+- Keep original and edited image variants separately in IndexedDB
+
+### Annotate
+
+- Crop, pen, highlighter, rectangle, arrow, text, blur, and pixelation tools
+- Undo, redo, reset, and adjustable tool color, size, and opacity where applicable
+- Move and resize text, rectangles, and arrows before committing them
+- Re-edit from the original or latest edited image without overwriting the original
+- Use an always-available web-safe font set without installed-font permission
+
+### Organize and find
+
+- Search page titles, URLs, domains, notes, tags, projects, and groups
+- Filter by group, project, tag, domain, date, capture type, favorite, or possible duplicate
+- Sort by capture date, title, or domain
+- Create, rename, and delete groups; move one or many captures between them
+- Add notes, projects, tags, and favorites
+- Choose compact, standard, or expanded Gallery cards
+- Use the full Gallery in a tab or the compact Gallery in Chrome's side panel
+
+### Download, back up, and recover
+
+- Download original or edited PNG copies
+- Download selected captures or the full active library as a ZIP with JSON metadata
+- Download library metadata as JSON or copy an individual capture summary as Markdown
+- Optionally write readable PNG, JSON, and Markdown backup copies to a Windows folder
+- Move deleted captures to Trash, then restore them or permanently empty Trash
+- Detect likely duplicates with an approximate average-hash comparison
+
+## Local-first architecture
 
 ```mermaid
 flowchart LR
-    U["User action"] --> P["Chrome popup / commands"]
+    U["User action"] --> P["Chrome popup or commands"]
     P --> C["Capture coordinator"]
     C --> B["Manifest V3 service worker"]
     C --> E["Local image editor"]
-    E --> D["IndexedDB library"]
-    D --> G["Gallery, search, detail views"]
-    D --> X["PNG / JSON / CSV / ZIP exports"]
-    D --> M["Optional Windows folder mirror"]
+    E --> D["IndexedDB working library"]
+    D --> G["Gallery, detail, and side-panel views"]
+    D --> X["PNG, JSON, and ZIP downloads"]
+    D --> K["Markdown clipboard summaries"]
+    D --> M["Optional Windows backup copies"]
 
     classDef local fill:#e8f5ee,stroke:#287a52,color:#153c2a;
     class D,E,G local;
 ```
 
-The browser database is the source of truth. Downloads and Explorer mirror files are deliberately treated as copies, which keeps storage ownership and deletion behavior predictable. Capture work is split between the user-facing surfaces and a Manifest V3 service worker, with shared TypeScript modules defining domain behavior.
+The IndexedDB library is the source of truth. Downloads, ZIP exports, clipboard content, and optional Windows folder files are one-way copies. CaptureFlow cannot currently restore its working library from those files.
 
-## Technology stack
+CaptureFlow has no backend, account system, analytics, advertising, cloud upload, or remote image processing.
 
-- TypeScript with strict compiler settings
-- React 18
+## Technology
+
+- TypeScript and React 18
 - Chrome Extension Manifest V3
 - Vite and CRXJS
 - IndexedDB and the File System Access API
 - Canvas-based image editing
 - Node's built-in test runner with `fake-indexeddb`
-- GitHub Actions for automated verification
 
-## Engineering practices demonstrated
+## Chrome permissions
 
-- Permission-minimized browser-extension design with optional host access
-- Transactional local persistence and explicit Trash lifecycle
-- Separation between authoritative records and exported copies
-- Unit and integration coverage for capture, storage, editor geometry, exports, and browser surfaces
-- Reproducible store packaging with manifest and remote-code auditing
-- Release checklists, privacy disclosures, reviewer instructions, and store listing documentation
-- Issue-driven planning, milestone tracking, pull-request review, and tagged releases
+- `activeTab`: capture the active page after a user starts a capture
+- `scripting`: read page metadata, show region selection, and scroll pages for full-page capture
+- `downloads`: save user-requested PNG, JSON, and ZIP files
+- `sidePanel`: display the compact Gallery beside the current page
+- Optional `<all_urls>` host access: keep user-initiated capture available after switching tabs in the side panel; it is not granted at installation
 
-## Representative code
+CaptureFlow does not request browsing-history, account, analytics, or `storage` permissions.
 
-The [`samples`](samples/) directory contains small, portfolio-safe excerpts showing the project’s domain modeling and collection-query approach. These samples are intentionally incomplete and cannot be used to reconstruct or build CaptureFlow.
+## Install and support
 
-- [`capture-model.ts`](samples/capture-model.ts) — representative domain types and storage boundaries
-- [`collection-query.ts`](samples/collection-query.ts) — deterministic filtering and sorting example
+Install CaptureFlow from the [Chrome Web Store](https://chromewebstore.google.com/detail/captureflow/hednpbkmifhjcpjfpncneleonhaknpdk).
 
-## Installation overview
-
-CaptureFlow is distributed as a packaged Chrome extension. A release build is compiled, audited for disallowed remote code, packaged with its Manifest V3 metadata and icons, then submitted to the Chrome Web Store. The complete source and store-build scripts are not distributed from this showcase.
-
-For product support and privacy information:
-
-- [CaptureFlow support](https://5c0ttp.github.io/captureflow/support.html)
+- [Product website](https://5c0ttp.github.io/captureflow/)
+- [Support](https://5c0ttp.github.io/captureflow/support.html)
+- [Troubleshooting](https://5c0ttp.github.io/captureflow/troubleshooting.html)
+- [Frequently asked questions](https://5c0ttp.github.io/captureflow/faq.html)
 - [Privacy policy](https://5c0ttp.github.io/captureflow/privacy-policy.html)
 
-## Project status
+## Current limitations
 
-CaptureFlow is under active private development. Public issues and milestones in this repository document product-level planning and engineering decisions without exposing proprietary implementation details.
+- Full-page output is capped at 20,000 pixels on either dimension and 100 million output pixels; larger pages are downscaled
+- Sticky content, lazy-loaded content, nested scrollers, and scroll animations can still produce imperfect full-page stitches
+- Duplicate detection is approximate
+- ZIP and JSON library import/restore are not implemented
+- Windows backup is one-way and cannot rebuild the in-app library automatically
+- There is no cloud sync, team sharing, account, or backend
+- Clearing Chrome extension data can permanently remove the working library
 
 ## License
 
-This repository is source-available for portfolio evaluation only and is **not open source**. All rights are reserved. See the [CaptureFlow Portfolio License](LICENSE).
+CaptureFlow's name, branding, screenshots, documentation, and other public materials remain proprietary. All rights are reserved. See [LICENSE](LICENSE).
